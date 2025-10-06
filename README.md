@@ -1,127 +1,102 @@
-<div align="center">
-🌟 Star this repo if you find it helpful!
-Made with ❤️ using Next.js and Tailwind CSS
-
-Report Bug · Request Feature
-
-</div> ```
-Backend README.md
+<p align="center"> Made with ❤️ using Next.js and Tailwind CSS </p> ```
+Backend README.md (Clean Version)
 Markdown
 
-<div align="center">
-  
-  # 🚀 EventSphere Backend API
-  
-  <p align="center">
-    <strong>Scalable event management API built with NestJS</strong>
-  </p>
+# 🚀 EventSphere Backend API
 
-  <p align="center">
-    <a href="https://eventsphere-backend-672628563199.asia-south1.run.app">
-      <img src="https://img.shields.io/badge/API-live-brightgreen?style=for-the-badge" alt="Live API">
-    </a>
-    <a href="#-quick-start">
-      <img src="https://img.shields.io/badge/quick-start-blue?style=for-the-badge" alt="Quick Start">
-    </a>
-    <a href="#-api-documentation">
-      <img src="https://img.shields.io/badge/API_Docs-orange?style=for-the-badge" alt="API Docs">
-    </a>
-  </p>
+<p align="center">
+  <strong>Scalable event management API built with NestJS</strong>
+</p>
 
-  <p align="center">
-    <img src="https://img.shields.io/badge/NestJS-10.0-E0234E?style=flat-square&logo=nestjs" alt="NestJS">
-    <img src="https://img.shields.io/badge/TypeScript-5.1-blue?style=flat-square&logo=typescript" alt="TypeScript">
-    <img src="https://img.shields.io/badge/PostgreSQL-15-336791?style=flat-square&logo=postgresql" alt="PostgreSQL">
-    <img src="https://img.shields.io/badge/Prisma-5.14-2D3748?style=flat-square&logo=prisma" alt="Prisma">
-  </p>
+<p align="center">
+  <a href="https://eventsphere-backend-672628563199.asia-south1.run.app">Live API</a> •
+  <a href="#installation">Quick Start</a> •
+  <a href="#api-endpoints">API Docs</a> •
+  <a href="#deployment">Deploy</a>
+</p>
 
-  <p align="center">
-    <img src="https://img.shields.io/badge/Deployed_on-Google_Cloud_Run-4285F4?style=flat-square&logo=google-cloud" alt="Google Cloud">
-    <img src="https://img.shields.io/badge/Container-Docker-2496ED?style=flat-square&logo=docker" alt="Docker">
-    <img src="https://img.shields.io/badge/Status-Production-success?style=flat-square" alt="Status">
-  </p>
+<p align="center">
+  <img src="https://img.shields.io/badge/NestJS-10.0-E0234E?logo=nestjs" alt="NestJS">
+  <img src="https://img.shields.io/badge/TypeScript-5.1-blue?logo=typescript" alt="TypeScript">
+  <img src="https://img.shields.io/badge/PostgreSQL-15-336791?logo=postgresql" alt="PostgreSQL">
+  <img src="https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker" alt="Docker">
+</p>
 
-  ---
-
-  <p align="center">
-    <img src="https://via.placeholder.com/800x400/e0234e/fff?text=EventSphere+API+Architecture" alt="API Architecture">
-  </p>
-
-</div>
+---
 
 ## 📋 Table of Contents
 
-- [✨ Features](#-features)
-- [🚀 Quick Start](#-quick-start)
-- [🛠️ Tech Stack](#️-tech-stack)
-- [📁 Project Structure](#-project-structure)
-- [🔧 Configuration](#-configuration)
-- [📚 API Documentation](#-api-documentation)
-- [🗄️ Database Schema](#️-database-schema)
-- [🔐 Authentication](#-authentication)
-- [💳 Payment Integration](#-payment-integration)
-- [🔌 WebSocket Events](#-websocket-events)
-- [🐳 Docker](#-docker)
-- [☁️ Deployment](#️-deployment)
-- [🧪 Testing](#-testing)
-- [🤝 Contributing](#-contributing)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Project Structure](#project-structure)
+- [Database Setup](#database-setup)
+- [API Endpoints](#api-endpoints)
+- [Authentication](#authentication)
+- [WebSocket Events](#websocket-events)
+- [Payment Integration](#payment-integration)
+- [Docker](#docker)
+- [Deployment](#deployment)
+- [Testing](#testing)
+- [Contributing](#contributing)
+
+---
 
 ## ✨ Features
 
-<table>
-  <tr>
-    <td align="center">🔐</td>
-    <td><strong>JWT Authentication</strong><br/>Secure authentication with JWT & OAuth2 (Google)</td>
-  </tr>
-  <tr>
-    <td align="center">💳</td>
-    <td><strong>Stripe Integration</strong><br/>Complete payment flow with webhooks</td>
-  </tr>
-  <tr>
-    <td align="center">🔌</td>
-    <td><strong>Real-time WebSockets</strong><br/>Socket.IO for live chat functionality</td>
-  </tr>
-  <tr>
-    <td align="center">🗄️</td>
-    <td><strong>PostgreSQL + Prisma</strong><br/>Type-safe database access with migrations</td>
-  </tr>
-  <tr>
-    <td align="center">🐳</td>
-    <td><strong>Docker Ready</strong><br/>Containerized for easy deployment</td>
-  </tr>
-  <tr>
-    <td align="center">☁️</td>
-    <td><strong>Cloud Native</strong><br/>Deployed on Google Cloud Run</td>
-  </tr>
-</table>
+- 🔐 **JWT Authentication** - Secure auth with JWT & Google OAuth2
+- 💳 **Stripe Payments** - Complete payment flow with webhooks
+- 🔌 **Real-time WebSockets** - Socket.IO for live chat
+- 🗄️ **PostgreSQL + Prisma** - Type-safe database access
+- 🐳 **Docker Ready** - Containerized deployment
+- ☁️ **Cloud Native** - Deployed on Google Cloud Run
 
-## 🚀 Quick Start
+---
+
+## 🛠 Tech Stack
+
+### Core Framework
+- **NestJS 10.0+** - Progressive Node.js framework
+- **TypeScript 5.1+** - Type safety
+- **PostgreSQL 15+** - Relational database
+- **Prisma 5.14+** - Type-safe ORM
+
+### Authentication & Security
+- **Passport.js** - Authentication middleware
+- **JWT** - Token management
+- **Bcrypt** - Password hashing
+- **Google OAuth2** - Social login
+
+### External Services
+- **Stripe** - Payment processing
+- **Socket.IO** - Real-time communication
+- **Supabase** - Managed PostgreSQL
+
+---
+
+## 🚀 Installation
 
 ### Prerequisites
+- Node.js 18.0 or later
+- PostgreSQL 13+ or Supabase account
+- npm or yarn
+- Docker (optional)
 
-- **Node.js** 18.0 or later
-- **PostgreSQL** 13+ or **Supabase** account
-- **npm** or **yarn**
-- **Docker** (optional)
-
-### Installation
+### Setup Steps
 
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/eventsphere-backend.git
-   cd eventsphere-backend
+```bash
+git clone https://github.com/yourusername/eventsphere-backend.git
+cd eventsphere-backend
 Install dependencies
-
 Bash
 
 npm install
 Set up environment variables
-
 Bash
 
 cp .env.example .env
-Update .env with your configuration:
-
+Configure environment variables
 env
 
 DATABASE_URL="postgresql://user:password@localhost:5432/eventsphere"
@@ -132,95 +107,60 @@ GOOGLE_CLIENT_ID="your-google-client-id"
 GOOGLE_CLIENT_SECRET="your-google-client-secret"
 FRONTEND_URL="http://localhost:3001"
 BACKEND_URL="http://localhost:3000"
-Set up the database
-
+Set up database
 Bash
 
 npx prisma migrate dev
 npx prisma generate
-Run the development server
-
+Run development server
 Bash
 
 npm run start:dev
-Access the API
-
-API will be available at http://localhost:3000
-
-🛠️ Tech Stack
-Core Framework
-Technology	Purpose	Version
-NestJS	Node.js Framework	10.0+
-TypeScript	Type Safety	5.1+
-PostgreSQL	Database	15+
-Prisma	ORM	5.14+
-Authentication & Security
-Library	Purpose
-Passport.js	Authentication
-JWT	Token Management
-Bcrypt	Password Hashing
-Google OAuth2	Social Login
-External Services
-Service	Purpose
-Stripe	Payment Processing
-Socket.IO	Real-time Communication
-Supabase	Managed Database
+Access API
+API available at http://localhost:3000
 📁 Project Structure
 text
 
-src/
-├── auth/                  # Authentication module
-│   ├── decorator/        # Custom decorators
-│   ├── dto/             # Data transfer objects
-│   ├── guard/           # Auth guards
-│   └── strategy/        # Passport strategies
-├── chat/                 # WebSocket chat module
-│   ├── chat.gateway.ts  # Socket.IO gateway
-│   └── chat.module.ts   
-├── events/               # Events module
-│   ├── dto/             # Event DTOs
-│   ├── events.controller.ts
-│   ├── events.service.ts
-│   └── events.module.ts
-├── payments/             # Stripe payments module
-│   ├── payments.controller.ts
-│   ├── payments.service.ts
-│   └── payments.module.ts
-├── prisma/               # Prisma service
-│   ├── prisma.service.ts
-│   └── prisma.module.ts
-├── registrations/        # Event registration module
-│   ├── registrations.service.ts
-│   └── registrations.module.ts
-├── users/                # Users module
-│   ├── users.controller.ts
-│   └── users.module.ts
-├── app.module.ts         # Root module
-└── main.ts              # Application entry point
-🔧 Configuration
-Environment Variables
-env
-
-# Database
-DATABASE_URL="postgresql://user:password@host:port/database"
-
-# Authentication
-JWT_SECRET="your-super-secret-jwt-key"
-
-# Stripe
-STRIPE_SECRET_KEY="sk_test_..."
-STRIPE_WEBHOOK_SECRET="whsec_..."
-
-# Google OAuth
-GOOGLE_CLIENT_ID="your-client-id.apps.googleusercontent.com"
-GOOGLE_CLIENT_SECRET="your-client-secret"
-
-# URLs
-FRONTEND_URL="https://your-frontend-url.com"
-BACKEND_URL="https://your-backend-url.com"
-Database Configuration
-Using Prisma schema (prisma/schema.prisma):
-
+eventsphere-backend/
+├── src/
+│   ├── auth/                  # Authentication module
+│   │   ├── decorator/         # Custom decorators
+│   │   ├── dto/              # Data transfer objects
+│   │   ├── guard/            # Auth guards
+│   │   └── strategy/         # Passport strategies
+│   ├── chat/                 # WebSocket chat module
+│   │   ├── chat.gateway.ts   # Socket.IO gateway
+│   │   └── chat.module.ts
+│   ├── events/               # Events module
+│   │   ├── dto/              # Event DTOs
+│   │   ├── events.controller.ts
+│   │   ├── events.service.ts
+│   │   └── events.module.ts
+│   ├── payments/             # Stripe payments module
+│   │   ├── payments.controller.ts
+│   │   ├── payments.service.ts
+│   │   └── payments.module.ts
+│   ├── prisma/               # Prisma service
+│   │   ├── prisma.service.ts
+│   │   └── prisma.module.ts
+│   ├── registrations/        # Event registration module
+│   │   ├── registrations.service.ts
+│   │   └── registrations.module.ts
+│   ├── users/                # Users module
+│   │   ├── users.controller.ts
+│   │   └── users.module.ts
+│   ├── app.module.ts         # Root module
+│   └── main.ts               # Entry point
+├── prisma/
+│   ├── migrations/           # Database migrations
+│   └── schema.prisma         # Database schema
+├── .env                      # Environment variables
+├── Dockerfile                # Docker configuration
+├── docker-compose.yml        # Docker compose config
+├── env.yml                   # Cloud Run env config
+└── package.json              # Dependencies
+🗄️ Database Setup
+Prisma Schema
 prisma
 
 generator client {
@@ -231,118 +171,97 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-📚 API Documentation
-Base URL
-text
 
+model User {
+  id            String         @id @default(cuid())
+  email         String         @unique
+  password      String
+  firstName     String?
+  lastName      String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  events        Event[]
+  registrations Registration[]
+}
+
+model Event {
+  id            String         @id @default(cuid())
+  title         String
+  description   String
+  location      String
+  date          DateTime
+  price         Float          @default(0)
+  capacity      Int
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  hostId        String
+  host          User           @relation(fields: [hostId], references: [id])
+  registrations Registration[]
+}
+
+model Registration {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  eventId   String
+  event     Event    @relation(fields: [eventId], references: [id])
+
+  @@unique([userId, eventId])
+}
+Database Commands
+Bash
+
+# Create migration
+npx prisma migrate dev --name migration_name
+
+# Apply migrations
+npx prisma migrate deploy
+
+# Generate Prisma Client
+npx prisma generate
+
+# Open Prisma Studio
+npx prisma studio
+📚 API Endpoints
+Base URL
 Production: https://eventsphere-backend-672628563199.asia-south1.run.app
 Development: http://localhost:3000
 Authentication Endpoints
-Method	Endpoint	Description	Body
-POST	/auth/signup	Register new user	{ email, password, firstName?, lastName? }
-POST	/auth/signin	Login user	{ email, password }
-GET	/auth/google	Initiate Google OAuth	-
-GET	/auth/google/callback	Google OAuth callback	-
+Method	Endpoint	Description
+POST	/auth/signup	Register new user
+POST	/auth/signin	Login user
+GET	/auth/google	Initiate Google OAuth
+GET	/auth/google/callback	Google OAuth callback
 User Endpoints
 Method	Endpoint	Auth	Description
-GET	/users/me	✅	Get current user profile
+GET	/users/me	✅	Get current user
 Event Endpoints
 Method	Endpoint	Auth	Description
 GET	/events	❌	Get all events
 GET	/events/:id	Optional	Get event details
 POST	/events	✅	Create new event
-PATCH	/events/:id	✅	Update event (host only)
-DELETE	/events/:id	✅	Delete event (host only)
-POST	/events/:id/register	✅	Register for free event
+PATCH	/events/:id	✅	Update event
+DELETE	/events/:id	✅	Delete event
+POST	/events/:id/register	✅	Register for event
 Payment Endpoints
 Method	Endpoint	Auth	Description
-POST	/payments/checkout-session/:eventId	✅	Create Stripe checkout session
-POST	/payments/webhook	Stripe	Handle Stripe webhooks
-Response Format
-Success Response
-JSON
-
-{
-  "success": true,
-  "data": { ... },
-  "message": "Operation successful"
-}
-Error Response
-JSON
-
-{
-  "statusCode": 400,
-  "message": "Error message",
-  "error": "Bad Request"
-}
-🗄️ Database Schema
-ERD Diagram
-mermaid
-
-erDiagram
-    User ||--o{ Event : hosts
-    User ||--o{ Registration : has
-    Event ||--o{ Registration : has
-    
-    User {
-        string id PK
-        string email UK
-        string password
-        string firstName
-        string lastName
-        datetime createdAt
-        datetime updatedAt
-    }
-    
-    Event {
-        string id PK
-        string title
-        string description
-        string location
-        datetime date
-        float price
-        int capacity
-        string hostId FK
-        datetime createdAt
-        datetime updatedAt
-    }
-    
-    Registration {
-        string id PK
-        string userId FK
-        string eventId FK
-        datetime createdAt
-    }
+POST	/payments/checkout-session/:eventId	✅	Create checkout session
+POST	/payments/webhook	Stripe	Handle webhooks
 🔐 Authentication
-JWT Strategy
+JWT Authentication
 TypeScript
 
-// Request with JWT token
-headers: {
-  'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIs...'
-}
-Protected Routes
-Use the @UseGuards(JwtGuard) decorator:
-
-TypeScript
-
+// Protected endpoint example
 @UseGuards(JwtGuard)
 @Post('events')
 async createEvent(@GetUser() user: User) {
-  // Protected endpoint
+  // Protected endpoint logic
 }
-💳 Payment Integration
-Stripe Webhook Setup
-Local Development
+Request Headers
+http
 
-Bash
-
-stripe listen --forward-to localhost:3000/payments/webhook
-Production
-
-Add webhook endpoint in Stripe Dashboard
-Set endpoint URL: https://your-api.com/payments/webhook
-Select events: checkout.session.completed
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs...
 🔌 WebSocket Events
 Connection
 JavaScript
@@ -351,11 +270,21 @@ const socket = io('https://your-api.com', {
   auth: { token: 'jwt-token' }
 });
 Events
-Event Name	Direction	Payload	Description
-joinRoom	Client→Server	{ eventId }	Join event chat room
-sendMessage	Client→Server	{ eventId, message }	Send chat message
-newMessage	Server→Client	{ user, message, timestamp }	Receive chat message
+Event	Direction	Payload	Description
+joinRoom	Client→Server	{ eventId }	Join event chat
+sendMessage	Client→Server	{ eventId, message }	Send message
+newMessage	Server→Client	{ user, message, timestamp }	Receive message
 error	Server→Client	{ message }	Error notification
+💳 Payment Integration
+Stripe Setup
+Development
+Bash
+
+stripe listen --forward-to localhost:3000/payments/webhook
+Production
+Add webhook endpoint in Stripe Dashboard
+Set endpoint URL: https://your-api.com/payments/webhook
+Select events: checkout.session.completed
 🐳 Docker
 Build Image
 Bash
@@ -391,33 +320,24 @@ CMD ["node", "dist/main"]
 ☁️ Deployment
 Google Cloud Run
 Build and push image
-
 Bash
 
-# Configure Docker for GCP
+# Configure Docker
 gcloud auth configure-docker asia-south1-docker.pkg.dev
 
 # Build image
-docker build -t asia-south1-docker.pkg.dev/PROJECT_ID/REPO_NAME/eventsphere-backend .
+docker build -t asia-south1-docker.pkg.dev/PROJECT_ID/REPO/eventsphere-backend .
 
 # Push image
-docker push asia-south1-docker.pkg.dev/PROJECT_ID/REPO_NAME/eventsphere-backend
-Deploy to Cloud Run
-
+docker push asia-south1-docker.pkg.dev/PROJECT_ID/REPO/eventsphere-backend
+Deploy
 Bash
 
 gcloud run deploy eventsphere-backend \
-  --image asia-south1-docker.pkg.dev/PROJECT_ID/REPO_NAME/eventsphere-backend \
+  --image asia-south1-docker.pkg.dev/PROJECT_ID/REPO/eventsphere-backend \
   --region asia-south1 \
   --allow-unauthenticated \
   --env-vars-file env.yml
-Environment Configuration (env.yml)
-YAML
-
-DATABASE_URL: "postgresql://..."
-JWT_SECRET: "your-secret"
-STRIPE_SECRET_KEY: "sk_test_..."
-# ... other variables
 🧪 Testing
 Run Tests
 Bash
@@ -428,11 +348,9 @@ npm run test
 # E2E tests
 npm run test:e2e
 
-# Test coverage
+# Coverage
 npm run test:cov
-API Testing with Thunder Client / Postman
-Import the collection from thunder-collection.json or create requests:
-
+API Testing
 http
 
 ### Sign Up
@@ -445,47 +363,13 @@ Content-Type: application/json
   "firstName": "John",
   "lastName": "Doe"
 }
-
-### Sign In
-POST http://localhost:3000/auth/signin
-Content-Type: application/json
-
-{
-  "email": "test@example.com",
-  "password": "password123"
-}
 🤝 Contributing
-We welcome contributions! Please follow these steps:
-
 Fork the repository
-Create a feature branch
-Bash
+Create feature branch (git checkout -b feature/AmazingFeature)
+Commit changes (git commit -m 'Add AmazingFeature')
+Push to branch (git push origin feature/AmazingFeature)
+Open Pull Request
+📄 License
+This project is licensed under the MIT License.
 
-git checkout -b feature/amazing-feature
-Make your changes
-Run tests
-Bash
-
-npm run test
-Commit your changes
-Bash
-
-git commit -m 'Add amazing feature'
-Push to the branch
-Bash
-
-git push origin feature/amazing-feature
-Open a Pull Request
-Development Guidelines
-Follow NestJS best practices
-Write unit tests for new features
-Use DTOs for request validation
-Keep controllers thin, logic in services
-Document API changes
-<div align="center">
-🌟 Star this repo if you find it helpful!
-Built with ❤️ using NestJS
-
-Report Bug · Request Feature
-
-</div> ```
+<p align="center"> Built with ❤️ using NestJS </p> ```
