@@ -1,25 +1,24 @@
-<p align="center"> Made with ❤️ using Next.js and Tailwind CSS </p> ```
-Backend README.md (Clean Version)
+Frontend README.md (Clean Version)
 Markdown
 
-# 🚀 EventSphere Backend API
+# 🎉 EventSphere Frontend
 
 <p align="center">
-  <strong>Scalable event management API built with NestJS</strong>
+  <strong>A modern event management platform built with Next.js</strong>
 </p>
 
 <p align="center">
-  <a href="https://eventsphere-backend-672628563199.asia-south1.run.app">Live API</a> •
+  <a href="https://eventsphere-frontend.vercel.app">Live Demo</a> •
   <a href="#installation">Quick Start</a> •
-  <a href="#api-endpoints">API Docs</a> •
-  <a href="#deployment">Deploy</a>
+  <a href="#features">Features</a> •
+  <a href="#api-endpoints">API Docs</a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/NestJS-10.0-E0234E?logo=nestjs" alt="NestJS">
-  <img src="https://img.shields.io/badge/TypeScript-5.1-blue?logo=typescript" alt="TypeScript">
-  <img src="https://img.shields.io/badge/PostgreSQL-15-336791?logo=postgresql" alt="PostgreSQL">
-  <img src="https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker" alt="Docker">
+  <img src="https://img.shields.io/badge/Next.js-14.2.3-black?logo=next.js" alt="Next.js">
+  <img src="https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Tailwind-3.4.1-38B2AC?logo=tailwind-css" alt="Tailwind">
+  <img src="https://img.shields.io/badge/Deployed-Vercel-000000?logo=vercel" alt="Vercel">
 </p>
 
 ---
@@ -30,64 +29,63 @@ Markdown
 - [Tech Stack](#tech-stack)
 - [Installation](#installation)
 - [Project Structure](#project-structure)
-- [Database Setup](#database-setup)
-- [API Endpoints](#api-endpoints)
-- [Authentication](#authentication)
-- [WebSocket Events](#websocket-events)
-- [Payment Integration](#payment-integration)
-- [Docker](#docker)
+- [Environment Variables](#environment-variables)
+- [Available Scripts](#available-scripts)
+- [API Integration](#api-integration)
+- [Components](#components)
+- [State Management](#state-management)
 - [Deployment](#deployment)
-- [Testing](#testing)
 - [Contributing](#contributing)
 
 ---
 
 ## ✨ Features
 
-- 🔐 **JWT Authentication** - Secure auth with JWT & Google OAuth2
-- 💳 **Stripe Payments** - Complete payment flow with webhooks
-- 🔌 **Real-time WebSockets** - Socket.IO for live chat
-- 🗄️ **PostgreSQL + Prisma** - Type-safe database access
-- 🐳 **Docker Ready** - Containerized deployment
-- ☁️ **Cloud Native** - Deployed on Google Cloud Run
+- 🔐 **Secure Authentication** - JWT-based auth with Google OAuth support
+- 📅 **Event Management** - Create, browse, and manage events seamlessly
+- 💳 **Stripe Payments** - Secure payment processing for paid events
+- 💬 **Real-time Chat** - Live chat rooms for event attendees
+- 📱 **Responsive Design** - Mobile-first approach with Tailwind CSS
+- ⚡ **Optimized Performance** - Server-side rendering with Next.js App Router
 
 ---
 
 ## 🛠 Tech Stack
 
-### Core Framework
-- **NestJS 10.0+** - Progressive Node.js framework
-- **TypeScript 5.1+** - Type safety
-- **PostgreSQL 15+** - Relational database
-- **Prisma 5.14+** - Type-safe ORM
+### Core Technologies
+- **Next.js 14.2.3** - React framework with App Router
+- **React 18+** - UI library
+- **TypeScript 5.0+** - Type safety
+- **Tailwind CSS 3.4.1** - Utility-first CSS
 
-### Authentication & Security
-- **Passport.js** - Authentication middleware
-- **JWT** - Token management
-- **Bcrypt** - Password hashing
-- **Google OAuth2** - Social login
+### State Management & Data Fetching
+- **Zustand** - Client state management
+- **TanStack Query** - Server state management
+- **Axios** - HTTP client
 
-### External Services
-- **Stripe** - Payment processing
-- **Socket.IO** - Real-time communication
-- **Supabase** - Managed PostgreSQL
+### Forms & Validation
+- **React Hook Form** - Form management
+- **Zod** - Schema validation
+
+### Real-time & UI
+- **Socket.io Client** - WebSocket connection
+- **React Hot Toast** - Toast notifications
 
 ---
 
 ## 🚀 Installation
 
 ### Prerequisites
-- Node.js 18.0 or later
-- PostgreSQL 13+ or Supabase account
-- npm or yarn
-- Docker (optional)
+- Node.js 18.17 or later
+- npm or yarn or pnpm
+- Git
 
 ### Setup Steps
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/eventsphere-backend.git
-cd eventsphere-backend
+git clone https://github.com/yourusername/eventsphere-frontend.git
+cd eventsphere-frontend
 Install dependencies
 Bash
 
@@ -95,274 +93,166 @@ npm install
 Set up environment variables
 Bash
 
-cp .env.example .env
+cp .env.example .env.local
 Configure environment variables
 env
 
-DATABASE_URL="postgresql://user:password@localhost:5432/eventsphere"
-JWT_SECRET="your-secret-key"
-STRIPE_SECRET_KEY="sk_test_..."
-STRIPE_WEBHOOK_SECRET="whsec_..."
-GOOGLE_CLIENT_ID="your-google-client-id"
-GOOGLE_CLIENT_SECRET="your-google-client-secret"
-FRONTEND_URL="http://localhost:3001"
-BACKEND_URL="http://localhost:3000"
-Set up database
+NEXT_PUBLIC_API_BASE_URL=http://localhost:3000
+Run the development server
 Bash
 
-npx prisma migrate dev
-npx prisma generate
-Run development server
-Bash
-
-npm run start:dev
-Access API
-API available at http://localhost:3000
+npm run dev
+Open browser
+Navigate to http://localhost:3001
 📁 Project Structure
 text
 
-eventsphere-backend/
+eventsphere-frontend/
 ├── src/
-│   ├── auth/                  # Authentication module
-│   │   ├── decorator/         # Custom decorators
-│   │   ├── dto/              # Data transfer objects
-│   │   ├── guard/            # Auth guards
-│   │   └── strategy/         # Passport strategies
-│   ├── chat/                 # WebSocket chat module
-│   │   ├── chat.gateway.ts   # Socket.IO gateway
-│   │   └── chat.module.ts
-│   ├── events/               # Events module
-│   │   ├── dto/              # Event DTOs
-│   │   ├── events.controller.ts
-│   │   ├── events.service.ts
-│   │   └── events.module.ts
-│   ├── payments/             # Stripe payments module
-│   │   ├── payments.controller.ts
-│   │   ├── payments.service.ts
-│   │   └── payments.module.ts
-│   ├── prisma/               # Prisma service
-│   │   ├── prisma.service.ts
-│   │   └── prisma.module.ts
-│   ├── registrations/        # Event registration module
-│   │   ├── registrations.service.ts
-│   │   └── registrations.module.ts
-│   ├── users/                # Users module
-│   │   ├── users.controller.ts
-│   │   └── users.module.ts
-│   ├── app.module.ts         # Root module
-│   └── main.ts               # Entry point
-├── prisma/
-│   ├── migrations/           # Database migrations
-│   └── schema.prisma         # Database schema
-├── .env                      # Environment variables
-├── Dockerfile                # Docker configuration
-├── docker-compose.yml        # Docker compose config
-├── env.yml                   # Cloud Run env config
-└── package.json              # Dependencies
-🗄️ Database Setup
-Prisma Schema
-prisma
+│   ├── app/                    # Next.js App Router
+│   │   ├── auth/               # Authentication pages
+│   │   ├── events/             # Event pages
+│   │   ├── payment/            # Payment flow pages
+│   │   ├── signin/             # Sign in page
+│   │   ├── signup/             # Sign up page
+│   │   ├── globals.css         # Global styles
+│   │   ├── layout.tsx          # Root layout
+│   │   └── page.tsx            # Homepage
+│   ├── components/             # React components
+│   │   ├── auth/               # Auth components
+│   │   ├── chat/               # Chat components
+│   │   ├── events/             # Event components
+│   │   ├── providers/          # Context providers
+│   │   ├── Navbar.tsx          # Navigation
+│   │   └── SocketInitializer.tsx
+│   ├── lib/                    # Utilities
+│   │   └── api/                # API configuration
+│   ├── stores/                 # Zustand stores
+│   │   ├── authStore.ts        # Auth state
+│   │   └── socketStore.ts      # Socket state
+│   └── types/                  # TypeScript types
+├── public/                     # Static files
+├── .env.local                  # Environment variables
+├── next.config.mjs             # Next.js config
+├── package.json                # Dependencies
+├── tailwind.config.ts          # Tailwind config
+└── tsconfig.json               # TypeScript config
+🔧 Environment Variables
+Create .env.local file in root directory:
 
-generator client {
-  provider = "prisma-client-js"
-}
+env
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
+# Backend API URL
+NEXT_PUBLIC_API_BASE_URL=https://your-backend-url.com
 
-model User {
-  id            String         @id @default(cuid())
-  email         String         @unique
-  password      String
-  firstName     String?
-  lastName      String?
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
-  events        Event[]
-  registrations Registration[]
-}
-
-model Event {
-  id            String         @id @default(cuid())
-  title         String
-  description   String
-  location      String
-  date          DateTime
-  price         Float          @default(0)
-  capacity      Int
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
-  hostId        String
-  host          User           @relation(fields: [hostId], references: [id])
-  registrations Registration[]
-}
-
-model Registration {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
-  eventId   String
-  event     Event    @relation(fields: [eventId], references: [id])
-
-  @@unique([userId, eventId])
-}
-Database Commands
+# Add more environment variables as needed
+📜 Available Scripts
 Bash
 
-# Create migration
-npx prisma migrate dev --name migration_name
+# Development
+npm run dev          # Start development server on port 3001
 
-# Apply migrations
-npx prisma migrate deploy
+# Production
+npm run build        # Build for production
+npm run start        # Start production server
 
-# Generate Prisma Client
-npx prisma generate
+# Code Quality
+npm run lint         # Run ESLint
+npm run type-check   # Run TypeScript compiler check
+🔌 API Integration
+Axios Configuration
+Located in lib/api/axios.ts:
 
-# Open Prisma Studio
-npx prisma studio
-📚 API Endpoints
-Base URL
-Production: https://eventsphere-backend-672628563199.asia-south1.run.app
-Development: http://localhost:3000
-Authentication Endpoints
-Method	Endpoint	Description
-POST	/auth/signup	Register new user
-POST	/auth/signin	Login user
-GET	/auth/google	Initiate Google OAuth
-GET	/auth/google/callback	Google OAuth callback
-User Endpoints
-Method	Endpoint	Auth	Description
-GET	/users/me	✅	Get current user
-Event Endpoints
-Method	Endpoint	Auth	Description
-GET	/events	❌	Get all events
-GET	/events/:id	Optional	Get event details
-POST	/events	✅	Create new event
-PATCH	/events/:id	✅	Update event
-DELETE	/events/:id	✅	Delete event
-POST	/events/:id/register	✅	Register for event
-Payment Endpoints
-Method	Endpoint	Auth	Description
-POST	/payments/checkout-session/:eventId	✅	Create checkout session
-POST	/payments/webhook	Stripe	Handle webhooks
-🔐 Authentication
-JWT Authentication
 TypeScript
 
-// Protected endpoint example
-@UseGuards(JwtGuard)
-@Post('events')
-async createEvent(@GetUser() user: User) {
-  // Protected endpoint logic
-}
-Request Headers
-http
+import axios from 'axios';
 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIs...
-🔌 WebSocket Events
-Connection
+const api = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+// Request interceptor for auth
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+export default api;
+Example API Calls
+TypeScript
+
+// Fetch all events
+const { data } = await api.get('/events');
+
+// Create new event
+const response = await api.post('/events', eventData);
+
+// Register for event
+await api.post(`/events/${eventId}/register`);
+🎨 Components
+Core Components
+Component	Description	Location
+Navbar	Main navigation with auth status	components/Navbar.tsx
+SignInForm	User authentication form	components/auth/SignInForm.tsx
+SignUpForm	User registration form	components/auth/SignUpForm.tsx
+CreateEventForm	Event creation form	components/events/CreateEventForm.tsx
+ChatRoom	Real-time chat interface	components/chat/ChatRoom.tsx
+QueryProvider	TanStack Query provider	components/providers/QueryProvider.tsx
+SocketInitializer	WebSocket connection manager	components/SocketInitializer.tsx
+💾 State Management
+Zustand Store (authStore.ts)
+TypeScript
+
+interface AuthState {
+  user: User | null;
+  token: string | null;
+  setUser: (user: User | null) => void;
+  setToken: (token: string | null) => void;
+  logout: () => void;
+}
+TanStack Query Usage
+TypeScript
+
+// Example query
+const { data, isLoading } = useQuery({
+  queryKey: ['events'],
+  queryFn: () => api.get('/events'),
+});
+
+// Example mutation
+const mutation = useMutation({
+  mutationFn: (data) => api.post('/events', data),
+  onSuccess: () => {
+    queryClient.invalidateQueries(['events']);
+  },
+});
+🚀 Deployment
+Deploy to Vercel
+Option 1: Vercel CLI
+Bash
+
+npm i -g vercel
+vercel
+Option 2: Git Integration
+Push code to GitHub
+Import project on Vercel Dashboard
+Configure environment variables
+Deploy automatically on push
+Build Configuration
 JavaScript
 
-const socket = io('https://your-api.com', {
-  auth: { token: 'jwt-token' }
-});
-Events
-Event	Direction	Payload	Description
-joinRoom	Client→Server	{ eventId }	Join event chat
-sendMessage	Client→Server	{ eventId, message }	Send message
-newMessage	Server→Client	{ user, message, timestamp }	Receive message
-error	Server→Client	{ message }	Error notification
-💳 Payment Integration
-Stripe Setup
-Development
-Bash
+// next.config.mjs
+const nextConfig = {
+  // Your custom configuration
+};
 
-stripe listen --forward-to localhost:3000/payments/webhook
-Production
-Add webhook endpoint in Stripe Dashboard
-Set endpoint URL: https://your-api.com/payments/webhook
-Select events: checkout.session.completed
-🐳 Docker
-Build Image
-Bash
-
-docker build -t eventsphere-backend .
-Run Container
-Bash
-
-docker run -p 3000:3000 --env-file .env eventsphere-backend
-Docker Compose
-Bash
-
-docker-compose up
-Dockerfile
-Dockerfile
-
-FROM node:18-alpine AS builder
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci
-COPY . .
-RUN npm run build
-
-FROM node:18-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/prisma ./prisma
-RUN npx prisma generate
-EXPOSE 3000
-CMD ["node", "dist/main"]
-☁️ Deployment
-Google Cloud Run
-Build and push image
-Bash
-
-# Configure Docker
-gcloud auth configure-docker asia-south1-docker.pkg.dev
-
-# Build image
-docker build -t asia-south1-docker.pkg.dev/PROJECT_ID/REPO/eventsphere-backend .
-
-# Push image
-docker push asia-south1-docker.pkg.dev/PROJECT_ID/REPO/eventsphere-backend
-Deploy
-Bash
-
-gcloud run deploy eventsphere-backend \
-  --image asia-south1-docker.pkg.dev/PROJECT_ID/REPO/eventsphere-backend \
-  --region asia-south1 \
-  --allow-unauthenticated \
-  --env-vars-file env.yml
-🧪 Testing
-Run Tests
-Bash
-
-# Unit tests
-npm run test
-
-# E2E tests
-npm run test:e2e
-
-# Coverage
-npm run test:cov
-API Testing
-http
-
-### Sign Up
-POST http://localhost:3000/auth/signup
-Content-Type: application/json
-
-{
-  "email": "test@example.com",
-  "password": "password123",
-  "firstName": "John",
-  "lastName": "Doe"
-}
+export default nextConfig;
 🤝 Contributing
 Fork the repository
 Create feature branch (git checkout -b feature/AmazingFeature)
@@ -371,5 +261,3 @@ Push to branch (git push origin feature/AmazingFeature)
 Open Pull Request
 📄 License
 This project is licensed under the MIT License.
-
-<p align="center"> Built with ❤️ using NestJS </p> ```
