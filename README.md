@@ -39,7 +39,7 @@
 
 ---
 
-## ✨ #Features
+## ✨ Features
 
 - 🔐 **Secure Authentication** - JWT-based auth with Google OAuth support
 - 📅 **Event Management** - Create, browse, and manage events seamlessly
@@ -50,7 +50,7 @@
 
 ---
 
-## 🛠 #Tech Stack
+## 🛠 Tech Stack
 
 ### Core Technologies
 - **Next.js 14.2.3** - React framework with App Router
