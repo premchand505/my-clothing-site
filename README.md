@@ -1,4 +1,4 @@
-# 🚀 EventSphere Backend API
+# 🚀 EventSphere Backend APImm
 
 <p align="center">
   <strong>Scalable event management API built with NestJS</strong>
