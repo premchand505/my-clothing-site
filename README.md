@@ -1,299 +1,162 @@
-You're absolutely right. Here are clean, well-structured README files that will maintain proper formatting when copied:
+1. Root Directory README (./README.md)
+This README provides a high-level overview of the monorepo, global setup instructions, and links to the specific application READMEs.
 
-## **1. Root README.md**
+Markdown
 
-```markdown
-# Movies & TV Shows Management App
+# 🚀 Movies-TV Shows App (Full-Stack Monorepo)
 
-Full-stack application for managing movies and TV shows with image upload functionality.
+<p align="center">
+  <strong>A full-stack application for tracking your personal movie and TV show collection.</strong>
+</p>
 
-## 🌐 Live Demo
+<p align="center">
+  <a href="#-getting-started">Quick Start</a> •
+  <a href="#-workspaces">Workspaces</a> •
+  <a href="#-tech-stack-overview">Tech Stack</a>
+</p>
 
-**Frontend:** https://movies-tvshows-app.vercel.app  
-**Backend API:** https://backend-service-659948353959.us-central1.run.app
+<p align="center">
+  <img src="https://img.shields.io/badge/Turborepo-latest-blue?logo=turborepo" alt="Turborepo">
+  <img src="https://img.shields.io/badge/React-18-61DAFB?logo=react" alt="React">
+  <img src="https://img.shields.io/badge/Express.js-5.0-black?logo=express" alt="Express.js">
+  <img src="https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql" alt="MySQL">
+  <img src="https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker" alt="Docker">
+</p>
 
-## ✨ Features
+---
 
-- User Authentication (JWT + httpOnly cookies)
-- CRUD operations for movies/TV shows  
-- Image upload to Google Cloud Storage
-- Search with full-text indexing
-- Infinite scroll pagination
-- Responsive UI with Tailwind CSS
+## 📋 Table of Contents
 
-## 🏗️ Tech Stack
+- [Overview](#-overview)
+- [Tech Stack Overview](#-tech-stack-overview)
+- [Monorepo Structure](#-monorepo-structure)
+- [Getting Started](#-getting-started)
+- [Available Scripts](#-available-scripts)
+- [Workspaces](#-workspaces)
+- [Deployment Architecture](#-deployment-architecture)
+- [License](#-license)
 
-**Frontend:** React 18, TypeScript, Vite, Tailwind CSS, shadcn/ui  
-**Backend:** Node.js, Express 5, Prisma, MySQL  
-**Cloud:** Google Cloud Run, Google Cloud Storage, Vercel  
-**Architecture:** Monorepo with Turborepo
+---
 
-## 🚀 Quick Start
+## 📖 Overview
 
-### Prerequisites
-- Node.js 18+
-- MySQL database
-- Google Cloud Storage bucket
+This repository contains the source code for the "Movies-TV Shows App," a full-stack web application built within a Turborepo monorepo. It allows users to register, log in, and manage a personal library of movies and TV shows, including details and poster images.
 
-### Installation
+The project is divided into two main applications:
+-   **`frontend`**: A React application built with Vite and Tailwind CSS.
+-   **`backend`**: An Express.js REST API with a MySQL database managed by Prisma.
 
-1. Clone and install dependencies
-```bash
-git clone <repository-url>
-cd movies-tvshows-app
-npm install
-```
+---
 
-2. Configure environment variables
+## 🛠️ Tech Stack Overview
 
-**Backend** (`apps/backend/.env`):
-```env
-DATABASE_URL="mysql://user:password@host:port/db"
-JWT_SECRET="your-secret-key"
-GCS_BUCKET_NAME="your-bucket"
-GCP_PROJECT_ID="your-project-id"
-```
+-   **Monorepo:** [Turborepo](https://turbo.build/repo)
+-   **Frontend:** [React](https://reactjs.org/), [Vite](https://vitejs.dev/), [TypeScript](https://www.typescriptlang.org/), [Tailwind CSS](https://tailwindcss.com/), [TanStack Table](https://tanstack.com/table/)
+-   **Backend:** [Express.js](https://expressjs.com/), [Node.js](https://nodejs.org/), [TypeScript](https://www.typescriptlang.org/)
+-   **Database:** [MySQL](https://www.mysql.com/) + [Prisma ORM](https://www.prisma.io/)
+-   **File Storage:** [Google Cloud Storage](https://cloud.google.com/storage)
+-   **Authentication:** JWTs stored in `httpOnly` cookies
+-   **Containerization:** [Docker](https://www.docker.com/)
+-   **Deployment:**
+    -   Frontend on [Vercel](https://vercel.com/)
+    -   Backend on [Google Cloud Run](https://cloud.google.com/run)
 
-**Frontend** (`apps/frontend/.env.local`):
-```env
-VITE_API_URL=http://localhost:5000/api
-```
+---
 
-3. Setup database
-```bash
-cd apps/backend
-npm run prisma -- migrate deploy
-```
-
-4. Start development
-```bash
-npm run dev
-```
-
-## 📁 Project Structure
-
-```
+## 📁 Monorepo Structure
 movies-tvshows-app/
 ├── apps/
-│   ├── backend/         # Express API
-│   └── frontend/        # React App
+│ ├── backend/ # Express.js REST API
+│ └── frontend/ # React (Vite) Client
 ├── packages/
-│   └── types/          # Shared types
-└── Dockerfile          # Backend container
-```
+│ └── types/ # Shared TypeScript types
+├── .dockerignore
+├── .gitignore
+├── Dockerfile # For backend deployment
+├── package.json
+└── turbo.json
 
-## 🔗 API Endpoints
+text
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/register` | Register user |
-| POST | `/api/auth/login` | Login user |
-| GET | `/api/auth/me` | Get current user |
-| GET | `/api/movies` | List movies |
-| POST | `/api/movies` | Create movie |
-| PUT | `/api/movies/:id` | Update movie |
-| DELETE | `/api/movies/:id` | Delete movie |
 
-## 🚢 Deployment
+---
 
-### Backend (Google Cloud Run)
-```bash
-gcloud builds submit --tag gcr.io/PROJECT/backend
-gcloud run deploy backend-service --image gcr.io/PROJECT/backend
-```
+## 🚀 Getting Started
 
-### Frontend (Vercel)
-Connect GitHub repository and deploy with environment variables
+### Prerequisites
+- Node.js v18.0 or later
+- npm v10.0 or later
+- A MySQL database (e.g., from [Railway](https://railway.app/), or a local instance)
+- Google Cloud Storage bucket for file uploads
 
-## 📝 License
+### Setup Steps
 
-Created for technical assessment
-```
+1.  **Clone the repository**
+    ```bash
+    git clone <your-repository-url>
+    cd movies-tvshows-app
+    ```
 
-## **2. apps/frontend/README.md**
+2.  **Install all dependencies from the root**
+    This will install dependencies for all workspaces (`frontend`, `backend`, `types`).
+    ```bash
+    npm install
+    ```
 
-```markdown
-# Frontend - Movies & TV Shows App
+3.  **Set up environment variables**
+    You need to configure `.env` files for both the frontend and backend. Follow the detailed instructions in their respective README files:
+    -   [Backend Environment Setup](./apps/backend/README.md#-installation)
+    -   [Frontend Environment Setup](./apps/frontend/README.md#-getting-started)
 
-React application with TypeScript and Tailwind CSS.
+4.  **Run database migrations**
+    This command applies the database schema to your MySQL database.
+    ```bash
+    npm run prisma -- migrate dev --workspace=backend
+    ```
 
-## 🚀 Quick Start
+5.  **Run all applications in development mode**
+    This will start both the backend and frontend servers concurrently.
+    ```bash
+    npm run dev
+    ```
+    -   Frontend will be available at `http://localhost:5173`
+    -   Backend will be available at `http://localhost:5000`
 
-```bash
-npm install
-npm run dev       # Start dev server on :5173
-npm run build     # Build for production
-```
+---
 
-## 🛠️ Built With
+## 📜 Available Scripts
 
-- **React 18** with TypeScript
-- **Vite** - Build tool
-- **Tailwind CSS** + **shadcn/ui**
-- **React Hook Form** + **Zod**
-- **TanStack Table**
-- **Axios** for API calls
+These scripts are run from the root of the monorepo.
 
-## 📁 Structure
+- `npm run dev`: Starts all applications in development mode.
+- `npm run build`: Builds all applications for production.
+- `npm run lint`: Lints all applications.
+- `npm run format`: Formats all code with Prettier.
 
-```
-src/
-├── components/
-│   ├── custom/       # App components
-│   └── ui/          # shadcn components
-├── pages/           # Route pages
-├── context/         # Auth context
-└── services/        # API layer
-```
+---
 
-## ⚙️ Configuration
+## 📦 Workspaces
 
-Create `.env.local`:
-```env
-VITE_API_URL=http://localhost:5000/api
-```
+This monorepo contains the following workspaces. See their individual READMEs for more detailed information.
 
-## 🎨 Key Components
+| Workspace                                          | Description                                                 |
+| -------------------------------------------------- | ----------------------------------------------------------- |
+| [**`apps/frontend`**](./apps/frontend/README.md)     | The React client application.                               |
+| [**`apps/backend`**](./apps/backend/README.md)       | The Express.js REST API server.                             |
+| [**`packages/types`**](./packages/types/README.md)   | Shared TypeScript types between frontend and backend.       |
 
-### MovieForm
-Handles create/edit operations with image upload
 
-### MovieTable  
-Data table with search, pagination, and actions
+---
 
-### AuthContext
-Manages authentication state globally
+## ☁️ Deployment Architecture
 
-## 📦 Scripts
+-   The **Backend** is containerized using the root `Dockerfile` and deployed as a serverless container on **Google Cloud Run**.
+-   The **Frontend** is deployed as a static site on **Vercel**, configured to communicate with the live backend API.
+-   Poster images are uploaded directly from the backend to a **Google Cloud Storage** bucket.
+-   The MySQL database is hosted on **Railway**.
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview build locally |
-| `npm run lint` | Run ESLint |
+---
 
-## 🚀 Deployment
+## 📄 License
 
-Deployed on Vercel with automatic builds from GitHub.
-
-### Environment Variables
-- `VITE_API_URL` - Backend API URL
-```
-
-## **3. apps/backend/README.md**
-
-```markdown
-# Backend - Movies & TV Shows API
-
-Express.js REST API with TypeScript, Prisma, and Google Cloud Storage.
-
-## 🚀 Quick Start
-
-```bash
-npm install
-npm run prisma -- migrate deploy
-npm run dev       # Start dev server on :5000
-npm run build     # Build for production
-```
-
-## 🛠️ Built With
-
-- **Express 5** with TypeScript
-- **Prisma ORM** with MySQL
-- **JWT Authentication**
-- **Google Cloud Storage**
-- **Multer** for file uploads
-- **Zod** for validation
-
-## 📁 Structure
-
-```
-src/
-├── controllers/     # Request handlers
-├── middleware/      # Auth, upload, validation
-├── routes/         # API routes
-├── utils/          # Helpers
-└── app.ts          # Server entry
-```
-
-## ⚙️ Configuration
-
-Create `.env`:
-```env
-DATABASE_URL="mysql://user:pass@host:port/db"
-JWT_SECRET="secret-key"
-GCS_BUCKET_NAME="bucket-name"
-GCP_PROJECT_ID="project-id"
-PORT=5000
-```
-
-## 🗄️ Database Schema
-
-```prisma
-model User {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
-  password String
-  name     String?
-  movies   Movie[]
-}
-
-model Movie {
-  id       Int     @id @default(autoincrement())
-  title    String
-  type     String
-  director String
-  year     String
-  poster   String? @db.VarChar(1024)
-  userId   Int
-  user     User    @relation(fields: [userId], references: [id])
-}
-```
-
-## 🔐 Authentication
-
-- JWT tokens in httpOnly cookies
-- 7-day expiration
-- Protected routes require valid token
-
-## 📤 File Upload
-
-- Max size: 5MB
-- Formats: JPEG, PNG, GIF, WebP
-- Storage: Google Cloud Storage
-- Public URLs generated
-
-## 🐳 Docker
-
-```bash
-docker build -t backend .
-docker run -p 8080:8080 --env-file .env backend
-```
-
-## ☁️ Deployment
-
-```bash
-# Google Cloud Run
-gcloud builds submit --tag gcr.io/PROJECT/backend
-gcloud run deploy --image gcr.io/PROJECT/backend
-```
-
-## 📦 Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start with nodemon |
-| `npm run build` | Compile TypeScript |
-| `npm run start` | Run production |
-| `npm run prisma` | Prisma CLI |
-```
-
-These README files are:
-- **Clean and concise** - Only essential information
-- **Well-structured** - Clear sections and formatting
-- **Copy-paste friendly** - Maintains structure when pasted
-- **Professional** - Shows technical competence
-- **Easy to navigate** - Clear hierarchy and organization
-
-Each file focuses on what's most important for that specific part of the project.
+This project is licensed under the MIT License.
