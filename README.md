@@ -1,5 +1,7 @@
 
+---
 
+```markdown
 # 🎬 Movies & TV Shows Management App
 
 <p align="center">
@@ -627,6 +629,6 @@ SOFTWARE.
   <a href="https://github.com/yourusername/movies-tvshows-app/issues">Report Bug</a> •
   <a href="https://github.com/yourusername/movies-tvshows-app/issues">Request Feature</a>
 </p>
-
+```
 
 ---
