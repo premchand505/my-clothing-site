@@ -1,181 +1,104 @@
-# 🎬 Movies & TV Shows Management App
+# 🎬 Movies & TV Shows Backend API
 
 <p align="center">
-  <strong>Full-stack application for managing your favorite movies and TV shows</strong>
+  <strong>RESTful API for movie and TV show management</strong>
 </p>
 
 <p align="center">
-  <a href="https://movies-tvshows-app.vercel.app">Live Demo</a> •
-  <a href="#quick-start">Quick Start</a> •
-  <a href="#deployment">Deploy</a> •
-  <a href="#documentation">Documentation</a>
+  <a href="https://backend-service-659948353959.us-central1.run.app/api/health">Live API</a> •
+  <a href="#installation">Quick Start</a> •
+  <a href="#api-endpoints">API Docs</a> •
+  <a href="#deployment">Deploy</a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/TypeScript-5.2-blue?logo=typescript" alt="TypeScript">
-  <img src="https://img.shields.io/badge/React-18.2-61DAFB?logo=react" alt="React">
   <img src="https://img.shields.io/badge/Express-5.1-000000?logo=express" alt="Express">
+  <img src="https://img.shields.io/badge/TypeScript-5.9-blue?logo=typescript" alt="TypeScript">
   <img src="https://img.shields.io/badge/Prisma-6.18-2D3748?logo=prisma" alt="Prisma">
   <img src="https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql" alt="MySQL">
-  <img src="https://img.shields.io/badge/Turborepo-Ready-EF4444?logo=turborepo" alt="Turborepo">
+  <img src="https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker" alt="Docker">
 </p>
 
 ---
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
+- [Installation](#installation)
 - [Project Structure](#project-structure)
-- [Quick Start](#quick-start)
-- [Development](#development)
+- [Database Setup](#database-setup)
+- [API Endpoints](#api-endpoints)
+- [Authentication](#authentication)
+- [File Upload](#file-upload)
+- [Docker](#docker)
 - [Deployment](#deployment)
+- [Testing](#testing)
 - [Environment Variables](#environment-variables)
-- [API Documentation](#api-documentation)
-- [Contributing](#contributing)
-- [License](#license)
-
----
-
-## 🌟 Overview
-
-A modern, full-stack application built with a **monorepo architecture** using Turborepo. Manage your collection of movies and TV shows with features like image uploads, search, infinite scroll, and secure authentication.
-
-**Live Application:**
-- **Frontend:** https://movies-tvshows-app.vercel.app
-- **Backend API:** https://backend-service-659948353959.us-central1.run.app
 
 ---
 
 ## ✨ Features
 
-### 🔐 Authentication & Authorization
-- Secure JWT-based authentication
-- HttpOnly cookie storage for tokens
-- Protected routes and API endpoints
-- User registration and login
-
-### 🎥 Movie & TV Show Management
-- ✅ Create, Read, Update, Delete (CRUD) operations
-- ✅ Upload poster images to Google Cloud Storage
-- ✅ Search functionality with full-text search
-- ✅ Infinite scroll pagination
-- ✅ Filter by type (Movie/TV Show)
-- ✅ Rich metadata (director, year, budget, duration, location)
-
-### 🖼️ Image Management
-- Cloud-based storage using Google Cloud Storage
-- Automatic image URL generation
-- 5MB file size limit
-- Support for common image formats
-
-### 🎨 Modern UI/UX
-- Responsive design with Tailwind CSS
-- shadcn/ui component library
-- React Table for data display
-- Form validation with Zod
-- Toast notifications
+- 🔐 **JWT Authentication** - Secure auth with httpOnly cookies
+- 📁 **File Upload** - Google Cloud Storage integration
+- 🗄️ **MySQL + Prisma** - Type-safe database access
+- 🔍 **Full-Text Search** - Search movies by title, director, year
+- 📄 **Pagination** - Efficient data loading
+- 🐳 **Docker Ready** - Containerized deployment
+- ☁️ **Cloud Native** - Deployed on Google Cloud Run
+- ✅ **Input Validation** - Zod schema validation
+- 🔄 **CORS Enabled** - Cross-origin resource sharing
+- 📊 **Scalable Architecture** - Modular controller/service pattern
 
 ---
 
 ## 🛠 Tech Stack
 
-### Monorepo Architecture
-- **Turborepo** - High-performance build system
-- **npm Workspaces** - Package management
-
-### Frontend
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| React | 18.2 | UI library |
-| TypeScript | 5.2 | Type safety |
-| Vite | 5.2 | Build tool |
-| React Router | 6.23 | Routing |
-| TanStack Table | 8.16 | Data tables |
-| Tailwind CSS | 3.4 | Styling |
-| shadcn/ui | Latest | UI components |
-| Axios | 1.6 | HTTP client |
-| React Hook Form | 7.51 | Form handling |
-| Zod | 3.23 | Schema validation |
-
-### Backend
+### Core
 | Technology | Version | Purpose |
 |------------|---------|---------|
 | Express.js | 5.1 | Web framework |
 | TypeScript | 5.9 | Type safety |
 | Prisma | 6.18 | ORM |
 | MySQL | 8.0 | Database |
-| JWT | 9.0 | Authentication |
-| Bcrypt | 3.0 | Password hashing |
-| Multer | 2.0 | File uploads |
-| Google Cloud Storage | 7.17 | Image storage |
 
-### Infrastructure
-- **Database:** Railway MySQL
-- **Backend Hosting:** Google Cloud Run
-- **Frontend Hosting:** Vercel
-- **Image Storage:** Google Cloud Storage
-- **CI/CD:** Docker, Google Cloud Build
+### Authentication & Security
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| jsonwebtoken | 9.0 | JWT tokens |
+| bcryptjs | 3.0 | Password hashing |
+| cookie-parser | 1.4 | Cookie parsing |
+| cors | 2.8 | CORS middleware |
 
----
+### File Storage
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| Multer | 2.0 | File upload middleware |
+| @google-cloud/storage | 7.17 | GCS integration |
 
-## 📁 Project Structure
-movies-tvshows-app/
-├── apps/
-│ ├── backend/ # Express.js API
-│ │ ├── prisma/
-│ │ │ ├── migrations/
-│ │ │ └── schema.prisma
-│ │ ├── src/
-│ │ │ ├── controllers/
-│ │ │ ├── middleware/
-│ │ │ ├── routes/
-│ │ │ ├── utils/
-│ │ │ ├── validators/
-│ │ │ └── app.ts
-│ │ ├── .env
-│ │ ├── package.json
-│ │ └── tsconfig.json
-│ └── frontend/ # React application
-│ ├── src/
-│ │ ├── components/
-│ │ ├── context/
-│ │ ├── pages/
-│ │ └── services/
-│ ├── package.json
-│ └── vite.config.ts
-├── packages/
-│ └── types/ # Shared TypeScript types
-│ ├── index.ts
-│ └── package.json
-├── Dockerfile
-├── docker-compose.yml
-├── turbo.json
-└── package.json
-
-text
-
+### Validation
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| Zod | 4.1 | Schema validation |
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Installation
 
 ### Prerequisites
 
-- **Node.js** 18.0 or later
-- **npm** 10.5 or later
-- **MySQL** 8.0+ (or Railway account)
-- **Google Cloud Account** (for image storage)
-- **Docker** (optional)
+- Node.js 18.0 or later
+- MySQL 8.0+ or Railway account
+- Google Cloud account (for image storage)
+- npm 10.5+
 
-### Installation
+### Setup Steps
 
-1. **Clone the repository**
+1. **Navigate to backend directory**
 
 ```bash
-git clone https://github.com/yourusername/movies-tvshows-app.git
-cd movies-tvshows-app
+cd apps/backend
 Install dependencies
 Bash
 
@@ -183,77 +106,122 @@ npm install
 Set up environment variables
 Bash
 
-# Backend
-cp apps/backend/.env.example apps/backend/.env
-
-# Frontend
-cp apps/frontend/.env.example apps/frontend/.env.local
-Configure environment variables
-Edit apps/backend/.env:
+cp .env.example .env
+Configure .env:
 
 env
 
+# Database
 DATABASE_URL="mysql://user:password@host:port/database"
-JWT_SECRET="your-super-secret-jwt-key-min-64-characters"
+
+# Authentication
+JWT_SECRET="your-super-secret-jwt-key-minimum-64-characters-long"
+
+# Server
 PORT=5000
 NODE_ENV=development
-GCS_BUCKET_NAME="your-gcs-bucket-name"
+
+# Google Cloud Storage
+GCS_BUCKET_NAME="movies-tvshows-app-posters"
 GCP_PROJECT_ID="your-gcp-project-id"
-Edit apps/frontend/.env.local:
-
-env
-
-VITE_API_URL=http://localhost:5000/api
-Set up Google Cloud Storage
+Set up Google Cloud credentials
 Bash
 
-# Create a service account and download credentials
-# Save as apps/backend/gcp-service-account.json
+# Download service account key from GCP Console
+# Save as gcp-service-account.json
 
-# Set environment variable
-export GOOGLE_APPLICATION_CREDENTIALS="./apps/backend/gcp-service-account.json"
+export GOOGLE_APPLICATION_CREDENTIALS="./gcp-service-account.json"
 Initialize database
 Bash
 
-cd apps/backend
+# Generate Prisma client
 npx prisma generate
+
+# Run migrations
 npx prisma migrate dev
-cd ../..
-Start development servers
+
+# Optionally seed database
+npm run seed
+Start development server
 Bash
 
 npm run dev
-The application will be available at:
+API will be available at http://localhost:5000
 
-Frontend: http://localhost:5173
-Backend: http://localhost:5000
-💻 Development
-Available Scripts
-Root Level
+📁 Project Structure
+text
+
+apps/backend/
+├── prisma/
+│   ├── migrations/              # Database migrations
+│   │   └── 20240101_init/
+│   └── schema.prisma            # Database schema
+├── src/
+│   ├── controllers/             # Route controllers
+│   │   ├── authController.ts    # Authentication logic
+│   │   └── movieController.ts   # Movie CRUD operations
+│   ├── middleware/              # Express middleware
+│   │   ├── auth.ts              # JWT verification
+│   │   ├── errorHandler.ts      # Global error handler
+│   │   ├── upload.ts            # File upload (GCS)
+│   │   └── validate.ts          # Schema validation
+│   ├── routes/                  # API routes
+│   │   ├── authRoutes.ts        # /api/auth/*
+│   │   └── movieRoutes.ts       # /api/movies/*
+│   ├── utils/                   # Utility functions
+│   │   └── prismaClient.ts      # Prisma instance
+│   ├── validators/              # Zod schemas
+│   │   └── schemas.ts           # Validation schemas
+│   └── app.ts                   # Express app setup
+├── .env                         # Environment variables
+├── .env.example                 # Environment template
+├── package.json                 # Dependencies
+└── tsconfig.json                # TypeScript config
+🗄️ Database Setup
+Prisma Schema
+prisma
+
+// prisma/schema.prisma
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String?
+  movies    Movie[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Movie {
+  id        Int      @id @default(autoincrement())
+  title     String
+  type      String   // "movie" or "tvshow"
+  director  String
+  budget    String?
+  location  String?
+  duration  String?
+  year      String
+  poster    String?  @db.VarChar(1024)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  
+  @@fulltext([title, director, type, year])
+}
+Database Commands
 Bash
-
-npm run dev          # Start all apps in development mode
-npm run build        # Build all apps
-npm run lint         # Lint all apps
-Backend
-Bash
-
-cd apps/backend
-npm run dev          # Start with nodemon
-npm run build        # Compile TypeScript
-npm run start        # Run production build
-npm run prisma       # Prisma CLI commands
-Frontend
-Bash
-
-cd apps/frontend
-npm run dev          # Start Vite dev server
-npm run build        # Build for production
-npm run preview      # Preview production build
-Database Migrations
-Bash
-
-cd apps/backend
 
 # Create a new migration
 npx prisma migrate dev --name migration_name
@@ -261,116 +229,62 @@ npx prisma migrate dev --name migration_name
 # Apply migrations (production)
 npx prisma migrate deploy
 
+# Generate Prisma Client
+npx prisma generate
+
 # Reset database
 npx prisma migrate reset
 
-# Open Prisma Studio
+# Open Prisma Studio (database GUI)
 npx prisma studio
-🐳 Docker
-Build and Run with Docker
-Bash
 
-# Build image
-docker build -t movies-tvshows-app-backend .
-
-# Run container
-docker run -p 5000:5000 --env-file apps/backend/.env movies-tvshows-app-backend
-Docker Compose
-Bash
-
-# Start all services
-docker-compose up
-
-# Run in background
-docker-compose up -d
-
-# View logs
-docker-compose logs -f
-
-# Stop services
-docker-compose down
-☁️ Deployment
-Backend (Google Cloud Run)
-Build and push Docker image
-Bash
-
-# Set variables
-PROJECT_ID="your-gcp-project-id"
-REGION="us-central1"
-REPO_NAME="movies-tvshows-app"
-IMAGE_NAME="backend"
-
-# Configure Docker for Artifact Registry
-gcloud auth configure-docker $REGION-docker.pkg.dev
-
-# Build image
-docker build -t $REGION-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME .
-
-# Push image
-docker push $REGION-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME
-Deploy to Cloud Run
-Bash
-
-gcloud run deploy backend-service \
-  --image $REGION-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME \
-  --region $REGION \
-  --allow-unauthenticated \
-  --port 5000 \
-  --set-env-vars DATABASE_URL="mysql://user:password@host:port/database" \
-  --set-env-vars JWT_SECRET="your-secret" \
-  --set-env-vars GCS_BUCKET_NAME="your-bucket" \
-  --set-env-vars GCP_PROJECT_ID="your-project-id" \
-  --set-env-vars NODE_ENV="production" \
-  --min-instances 0 \
-  --max-instances 10
-Run database migrations
-Bash
-
-cd apps/backend
-DATABASE_URL="your-production-url" npx prisma migrate deploy
-Frontend (Vercel)
-Install Vercel CLI
-Bash
-
-npm install -g vercel
-Deploy
-Bash
-
-cd apps/frontend
-vercel --prod
-Set environment variables in Vercel dashboard
-env
-
-VITE_API_URL=https://your-backend-url.run.app/api
-🔐 Environment Variables
-Backend (apps/backend/.env)
-Variable	Description	Example
-DATABASE_URL	MySQL connection string	mysql://user:pass@host:port/db
-JWT_SECRET	Secret key for JWT signing	your-64-char-secret
-PORT	Server port	5000
-NODE_ENV	Environment	development / production
-GCS_BUCKET_NAME	Google Cloud Storage bucket	movies-posters
-GCP_PROJECT_ID	Google Cloud project ID	your-project-id
-Frontend (apps/frontend/.env.local)
-Variable	Description	Example
-VITE_API_URL	Backend API URL	http://localhost:5000/api
-📚 API Documentation
+# Format schema
+npx prisma format
+📚 API Endpoints
 Base URLs
 Development: http://localhost:5000/api
 Production: https://backend-service-659948353959.us-central1.run.app/api
 Authentication Endpoints
+Method	Endpoint	Auth	Description
+POST	/auth/register	❌	Register new user
+POST	/auth/login	❌	Login user
+POST	/auth/logout	✅	Logout user
+GET	/auth/me	✅	Get current user
 Register User
 http
 
-POST /auth/register
+POST /api/auth/register
 Content-Type: application/json
 
 {
   "email": "user@example.com",
-  "password": "SecurePass123",
+  "password": "SecurePassword123",
   "name": "John Doe"
 }
-Response:
+Response (200):
+
+JSON
+
+{
+  "user": {
+    "id": 1,
+    "email": "user@example.com",
+    "name": "John Doe",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+Login User
+http
+
+POST /api/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "SecurePassword123"
+}
+Response (200):
 
 JSON
 
@@ -380,60 +294,114 @@ JSON
     "email": "user@example.com",
     "name": "John Doe"
   },
-  "token": "eyJhbGciOiJIUzI1NiIs..."
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
-Login
-http
+Note: Token is set as httpOnly cookie automatically.
 
-POST /auth/login
-Content-Type: application/json
-
-{
-  "email": "user@example.com",
-  "password": "SecurePass123"
-}
 Get Current User
 http
 
-GET /auth/me
+GET /api/auth/me
 Cookie: token=eyJhbGciOiJIUzI1NiIs...
-Logout
-http
-
-POST /auth/logout
-Cookie: token=eyJhbGciOiJIUzI1NiIs...
-Movie Endpoints
-Get All Movies
-http
-
-GET /movies?page=1&limit=20&search=inception&type=movie
-Query Parameters:
-
-page - Page number (default: 1)
-limit - Items per page (default: 20)
-search - Search query (title, director)
-type - Filter by type (movie/tvshow)
-Response:
+Response (200):
 
 JSON
 
 {
-  "movies": [...],
+  "id": 1,
+  "email": "user@example.com",
+  "name": "John Doe",
+  "createdAt": "2024-01-01T00:00:00.000Z"
+}
+Logout
+http
+
+POST /api/auth/logout
+Cookie: token=eyJhbGciOiJIUzI1NiIs...
+Response (200):
+
+JSON
+
+{
+  "message": "Logged out successfully"
+}
+Movie Endpoints
+Method	Endpoint	Auth	Description
+GET	/movies	❌	Get all movies (paginated)
+GET	/movies/:id	❌	Get single movie
+POST	/movies	✅	Create new movie
+PUT	/movies/:id	✅	Update movie (owner only)
+DELETE	/movies/:id	✅	Delete movie (owner only)
+Get All Movies
+http
+
+GET /api/movies?page=1&limit=20&search=inception&type=movie
+Query Parameters:
+
+page (number) - Page number (default: 1)
+limit (number) - Items per page (default: 20, max: 100)
+search (string) - Search query (searches title, director, year)
+type (string) - Filter by type ("movie" or "tvshow")
+Response (200):
+
+JSON
+
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Inception",
+      "type": "movie",
+      "director": "Christopher Nolan",
+      "year": "2010",
+      "budget": "$160M",
+      "duration": "148 min",
+      "location": "USA",
+      "poster": "https://storage.googleapis.com/bucket/poster.jpg",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "user": {
+        "id": 1,
+        "name": "John Doe"
+      }
+    }
+  ],
   "pagination": {
     "total": 100,
     "page": 1,
     "limit": 20,
-    "totalPages": 5
+    "totalPages": 5,
+    "hasNext": true,
+    "hasPrev": false
   }
 }
 Get Single Movie
 http
 
-GET /movies/:id
+GET /api/movies/1
+Response (200):
+
+JSON
+
+{
+  "id": 1,
+  "title": "Inception",
+  "type": "movie",
+  "director": "Christopher Nolan",
+  "year": "2010",
+  "budget": "$160M",
+  "duration": "148 min",
+  "location": "USA",
+  "poster": "https://storage.googleapis.com/bucket/poster.jpg",
+  "user": {
+    "id": 1,
+    "email": "user@example.com",
+    "name": "John Doe"
+  }
+}
 Create Movie
 http
 
-POST /movies
+POST /api/movies
 Cookie: token=eyJhbGciOiJIUzI1NiIs...
 Content-Type: multipart/form-data
 
@@ -444,85 +412,444 @@ year: "2010"
 budget: "$160M"
 duration: "148 min"
 location: "USA"
-poster: [file]
+poster: [binary file data]
+Response (201):
+
+JSON
+
+{
+  "id": 1,
+  "title": "Inception",
+  "type": "movie",
+  "director": "Christopher Nolan",
+  "year": "2010",
+  "budget": "$160M",
+  "duration": "148 min",
+  "location": "USA",
+  "poster": "https://storage.googleapis.com/bucket/poster-123.jpg",
+  "userId": 1,
+  "createdAt": "2024-01-01T00:00:00.000Z"
+}
 Update Movie
 http
 
-PUT /movies/:id
+PUT /api/movies/1
 Cookie: token=eyJhbGciOiJIUzI1NiIs...
 Content-Type: multipart/form-data
 
-title: "Inception"
-[other fields...]
+title: "Inception (Updated)"
+budget: "$170M"
+poster: [optional new file]
+Response (200):
+
+JSON
+
+{
+  "id": 1,
+  "title": "Inception (Updated)",
+  "budget": "$170M",
+  ...
+}
 Delete Movie
 http
 
-DELETE /movies/:id
+DELETE /api/movies/1
 Cookie: token=eyJhbGciOiJIUzI1NiIs...
+Response (200):
+
+JSON
+
+{
+  "message": "Movie deleted successfully"
+}
 Health Check
 http
 
-GET /health
-For detailed API documentation, see:
+GET /api/health
+Response (200):
 
-Backend README
-Frontend README
+JSON
+
+{
+  "message": "Server is running!",
+  "timestamp": "2024-01-01T00:00:00.000Z"
+}
+🔐 Authentication
+JWT Strategy
+The API uses JWT tokens stored in httpOnly cookies for authentication.
+
+Token Generation:
+
+TypeScript
+
+import jwt from 'jsonwebtoken';
+
+const token = jwt.sign(
+  { id: user.id, email: user.email },
+  process.env.JWT_SECRET,
+  { expiresIn: '7d' }
+);
+Setting Cookie:
+
+TypeScript
+
+res.cookie('token', token, {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === 'production',
+  sameSite: 'strict',
+  maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+});
+Auth Middleware
+Protected routes use the protect middleware:
+
+TypeScript
+
+// middleware/auth.ts
+export const protect = async (req, res, next) => {
+  try {
+    const token = req.cookies.token;
+    
+    if (!token) {
+      return res.status(401).json({ error: 'Not authenticated' });
+    }
+    
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await prisma.user.findUnique({
+      where: { id: decoded.id }
+    });
+    
+    if (!user) {
+      return res.status(401).json({ error: 'User not found' });
+    }
+    
+    req.user = user;
+    next();
+  } catch (error) {
+    res.status(401).json({ error: 'Invalid token' });
+  }
+};
+Usage:
+
+TypeScript
+
+router.post('/movies', protect, createMovie);
+📁 File Upload
+Google Cloud Storage Integration
+Files are uploaded directly to Google Cloud Storage using a custom middleware.
+
+Upload Middleware:
+
+TypeScript
+
+// middleware/upload.ts
+import multer from 'multer';
+import { Storage } from '@google-cloud/storage';
+
+const storage = new Storage({
+  projectId: process.env.GCP_PROJECT_ID
+});
+
+const bucket = storage.bucket(process.env.GCS_BUCKET_NAME);
+
+// Multer config for memory storage
+export const multerUpload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype.startsWith('image/')) {
+      cb(null, true);
+    } else {
+      cb(new Error('Only images are allowed'));
+    }
+  }
+});
+
+// Upload to GCS
+export const uploadToGcs = async (req, res, next) => {
+  if (!req.file) return next();
+  
+  const blob = bucket.file(`posters/${Date.now()}-${req.file.originalname}`);
+  const blobStream = blob.createWriteStream({
+    resumable: false,
+    metadata: { contentType: req.file.mimetype }
+  });
+  
+  blobStream.on('error', (err) => next(err));
+  
+  blobStream.on('finish', () => {
+    const publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
+    req.file.path = publicUrl;
+    next();
+  });
+  
+  blobStream.end(req.file.buffer);
+};
+Usage:
+
+TypeScript
+
+router.post(
+  '/movies',
+  protect,
+  multerUpload.single('poster'),
+  uploadToGcs,
+  createMovie
+);
+Supported Formats
+JPEG/JPG
+PNG
+GIF
+WebP
+File Size Limit
+Maximum: 5MB
+🐳 Docker
+Dockerfile
+Dockerfile
+
+# Build stage
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+# Copy root dependencies
+COPY package.json package-lock.json ./
+RUN npm install
+
+# Copy monorepo
+COPY . .
+
+# Build backend
+RUN npx turbo run build --filter=backend
+
+# Production stage
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy build artifacts
+COPY --from=builder /app/apps/backend/dist ./dist
+COPY --from=builder /app/apps/backend/package.json ./package.json
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/apps/backend/prisma ./prisma
+COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+
+# Expose port
+EXPOSE 5000
+
+# Start server
+CMD ["node", "dist/app.js"]
+Docker Commands
+Bash
+
+# Build image
+docker build -t movies-backend -f ../../Dockerfile ../..
+
+# Run container
+docker run -p 5000:5000 --env-file .env movies-backend
+
+# Run with Docker Compose (from root)
+docker-compose up
+☁️ Deployment
+Google Cloud Run
+Set up Google Cloud
+Bash
+
+# Set project
+gcloud config set project YOUR_PROJECT_ID
+
+# Enable required APIs
+gcloud services enable run.googleapis.com
+gcloud services enable cloudbuild.googleapis.com
+gcloud services enable artifactregistry.googleapis.com
+Create Artifact Registry repository
+Bash
+
+gcloud artifacts repositories create movies-tvshows-app \
+  --repository-format=docker \
+  --location=us-central1
+Build and push image
+Bash
+
+# Configure Docker
+gcloud auth configure-docker us-central1-docker.pkg.dev
+
+# Build image
+docker build -t us-central1-docker.pkg.dev/PROJECT_ID/movies-tvshows-app/backend -f ../../Dockerfile ../..
+
+# Push image
+docker push us-central1-docker.pkg.dev/PROJECT_ID/movies-tvshows-app/backend
+Deploy to Cloud Run
+Bash
+
+gcloud run deploy backend-service \
+  --image us-central1-docker.pkg.dev/PROJECT_ID/movies-tvshows-app/backend \
+  --region us-central1 \
+  --allow-unauthenticated \
+  --port 5000 \
+  --set-env-vars DATABASE_URL="mysql://..." \
+  --set-env-vars JWT_SECRET="..." \
+  --set-env-vars GCS_BUCKET_NAME="..." \
+  --set-env-vars GCP_PROJECT_ID="..." \
+  --set-env-vars NODE_ENV="production" \
+  --min-instances 0 \
+  --max-instances 10 \
+  --memory 512Mi \
+  --cpu 1
+Run database migrations
+Bash
+
+DATABASE_URL="your-production-url" npx prisma migrate deploy
+Railway (Database)
+Create a new MySQL database on Railway
+Copy the connection URL
+Update DATABASE_URL in your environment variables
+Run migrations
+🧪 Testing
+Manual Testing with curl
+Bash
+
+# Register user
+curl -X POST http://localhost:5000/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"email":"test@test.com","password":"Test123","name":"Test User"}'
+
+# Login user
+curl -X POST http://localhost:5000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"test@test.com","password":"Test123"}' \
+  -c cookies.txt
+
+# Get current user
+curl http://localhost:5000/api/auth/me -b cookies.txt
+
+# Create movie
+curl -X POST http://localhost:5000/api/movies \
+  -b cookies.txt \
+  -F "title=Inception" \
+  -F "type=movie" \
+  -F "director=Christopher Nolan" \
+  -F "year=2010" \
+  -F "poster=@/path/to/image.jpg"
+
+# Get all movies
+curl "http://localhost:5000/api/movies?page=1&limit=20"
+Testing with Thunder Client / Postman
+Import this collection:
+
+JSON
+
+{
+  "info": {
+    "name": "Movies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/auth/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@test.com\",\n  \"password\": \"Test123\",\n  \"name\": \"Test User\"\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+🔧 Environment Variables
+Required Variables
+env
+
+# Database Configuration
+DATABASE_URL="mysql://user:password@host:port/database"
+
+# JWT Configuration
+JWT_SECRET="your-super-secret-jwt-key-minimum-64-characters-recommended"
+
+# Server Configuration
+PORT=5000
+NODE_ENV=development  # or "production"
+
+# Google Cloud Storage
+GCS_BUCKET_NAME="movies-tvshows-app-posters"
+GCP_PROJECT_ID="your-gcp-project-id"
+
+# Optional: Google Cloud credentials path
+GOOGLE_APPLICATION_CREDENTIALS="./gcp-service-account.json"
+Example .env File
+env
+
+DATABASE_URL="mysql://root:password@localhost:3306/movies_db"
+JWT_SECRET="b10301bd5d2a652ce1b6e509dec47293472cc0fd76056607737c81a0e108844bc75e1e6950a4b5a15cf7bab3712433bcf7bdd466ab5b56dd1413249aed8fac9c"
+PORT=5000
+NODE_ENV=development
+GCS_BUCKET_NAME="movies-tvshows-app-posters"
+GCP_PROJECT_ID="movies-tvshows-app"
+📊 Error Handling
+All errors are handled by a global error handler:
+
+TypeScript
+
+// middleware/errorHandler.ts
+export const errorHandler = (err, req, res, next) => {
+  console.error(err.stack);
+
+  // Prisma errors
+  if (err.code === 'P2002') {
+    return res.status(400).json({ error: 'Duplicate entry' });
+  }
+
+  // Validation errors
+  if (err.name === 'ZodError') {
+    return res.status(400).json({ 
+      error: 'Validation error',
+      details: err.errors 
+    });
+  }
+
+  // Default error
+  res.status(err.status || 500).json({
+    error: err.message || 'Internal server error'
+  });
+};
+Common Error Responses
+JSON
+
+// 400 Bad Request
+{
+  "error": "Validation error",
+  "details": [...]
+}
+
+// 401 Unauthorized
+{
+  "error": "Not authenticated"
+}
+
+// 403 Forbidden
+{
+  "error": "Not authorized to access this resource"
+}
+
+// 404 Not Found
+{
+  "error": "Resource not found"
+}
+
+// 500 Internal Server Error
+{
+  "error": "Internal server error"
+}
 🤝 Contributing
-Contributions are welcome! Please follow these steps:
+See the main README for contribution guidelines.
 
-Fork the repository
-Create a feature branch
-Bash
-
-git checkout -b feature/amazing-feature
-Make your changes
-Commit your changes
-Bash
-
-git commit -m 'feat: add amazing feature'
-Push to the branch
-Bash
-
-git push origin feature/amazing-feature
-Open a Pull Request
-Commit Convention
-feat: New feature
-fix: Bug fix
-docs: Documentation changes
-style: Code formatting
-refactor: Code restructuring
-test: Adding tests
-chore: Maintenance tasks
 📄 License
-This project is licensed under the MIT License.
+MIT License - see LICENSE for details.
 
-text
-
-MIT License
-
-Copyright (c) 2025 Movies & TV Shows App
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-🙏 Acknowledgments
-Turborepo - Monorepo build system
-shadcn/ui - Beautiful UI components
-Prisma - Next-generation ORM
-Railway - Database hosting
-Google Cloud - Cloud infrastructure
-<p align="center"> Made with ❤️ using React & Express <br><br> <a href="https://github.com/yourusername/movies-tvshows-app/issues">Report Bug</a> • <a href="https://github.com/yourusername/movies-tvshows-app/issues">Request Feature</a> </p> ```
+<p align="center"> Made with ❤️ using Express & TypeScript <br><br> <a href="https://github.com/yourusername/movies-tvshows-app">Back to Main README</a> </p> 
