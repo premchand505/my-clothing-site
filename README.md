@@ -1,5 +1,4 @@
 
----
 
 ```markdown
 # 🎬 Movies & TV Shows Management App
@@ -631,4 +630,4 @@ SOFTWARE.
 </p>
 ```
 
----
+
